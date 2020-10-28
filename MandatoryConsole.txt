@@ -1,0 +1,12 @@
+-create new sln                             = dotnet new sln
+-create API baru folder name API            = dotnet new webapi -o API
+-create solution di dlm folder API          = dotnet sln add API
+-add certifikat                             = dotnet dev-cert https --trust
+-add dotnet tools ef migration              = dotnet tool install --global dotnet-ef --version 5.0.0-preview.8.20407.4
+-migration                                  = dotnet ef migrations add InitialCreate -o Data/Migrations
+-migration update                           = dotnet ef database update
+-lihat status git               = git status
+-inisialisasi git               = git init
+-file yg diabaikan git       = dotnet new -h
+-file yg diabaikan git di dlm daftar .gitignore = dotnet new gitignore
+git config --list --show-origin

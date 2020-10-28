@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+
+    <!-- <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.9" /> -->
+    <!-- <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite.Design" Version="1.1.6" /> -->
+
+    <!-- PostgreSQL not compatible db Migration netcore 5, udemy no 13, 14 -->
+     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0-preview.8.20407.4">
+       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+       <PrivateAssets>all</PrivateAssets>
+     </PackageReference>
+     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.0-preview8" />
+
+
+    <!-- MySQL not compatible db Migration netcore 5, udemy no 13, 14 -->
+    <!-- <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.22" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore.Design" Version="8.0.19" /> -->
+
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+  </ItemGroup>
+
+</Project>
