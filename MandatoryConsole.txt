@@ -5,8 +5,15 @@
 -add dotnet tools ef migration              = dotnet tool install --global dotnet-ef --version 5.0.0-preview.8.20407.4
 -migration                                  = dotnet ef migrations add InitialCreate -o Data/Migrations
 -migration update                           = dotnet ef database update
+
 -lihat status git               = git status
 -inisialisasi git               = git init
--file yg diabaikan git       = dotnet new -h
+-file yg diabaikan git               = dotnet new -h
 -file yg diabaikan git di dlm daftar .gitignore = dotnet new gitignore
-git config --list --show-origin
+-autentikasi new git repo       = git remote add origin https://github.com/richiaprilio23/Netcore5-DatingApp-Sec1-2.git 
+-push git                   = git push -u origin main
+
+
+richiaprilio23
+richiaprilioleather@gmail.com
+git Repository name = Netcore5-DatingApp-Sec1-2
