@@ -1,19 +1,32 @@
--create new sln                             = dotnet new sln
--create API baru folder name API            = dotnet new webapi -o API
--create solution di dlm folder API          = dotnet sln add API
--add certifikat                             = dotnet dev-cert https --trust
--add dotnet tools ef migration              = dotnet tool install --global dotnet-ef --version 5.0.0-preview.8.20407.4
--migration                                  = dotnet ef migrations add InitialCreate -o Data/Migrations
--migration update                           = dotnet ef database update
+add db migration PasswordSalt and PasswordHash      = dotnet ef migrations add UserPasswordAdded
+update db migration                                 = dotnet ef database update
 
--lihat status git               = git status
--inisialisasi git               = git init
--file yg diabaikan git               = dotnet new -h
--file yg diabaikan git di dlm daftar .gitignore = dotnet new gitignore
--autentikasi new git repo       = git remote add origin https://github.com/richiaprilio23/Netcore5-DatingApp-Sec1-2.git 
--push git                   = git push -u origin main
+menjalankan debugging point
+1) pick point code dgn memberikan bulat merah di kiri
+2) pilih debugger vscode dgn icon segitiga serangga sebelah kiri
+3) di kotak atas pilih .NET Core Attach, f5, kemudian pilih API.exe
+4) pilih tombol send di postman
 
 
-richiaprilio23
-richiaprilioleather@gmail.com
-git Repository name = Netcore5-DatingApp-Sec1-2
+nama dari tampung variable > public int Username { get; set; }
+merupakan sebutan Property
+
+penulisan class selalu diawali dengan huruf besar
+
+drop database                                      = dotnet ef database drop
+
+
+JWT (Json Web Token) Struktur
+1) Header = algoritme
+2) Payload = authentication
+3) verify signature 
+
+berisi public key dan private key
+
+Interface = merupakan implementasi dari kelas2 manapun
+instal package nuget galery v6.7.1 = System.IdentityModel.Tokens.Jwt
+
+DTO = Data Transfer Object
+
+Middleware JWT 
+instal nuget galery Microsoft.AspNetCore.Authentication.JwtBearer 

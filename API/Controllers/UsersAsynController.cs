@@ -7,9 +7,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class UsersAsynController : ControllerBase
+    // [ApiController]
+    // [Route("api/[controller]")]
+    // public class UsersAsynController : ControllerBase
+    public class UsersAsynController : BaseApiController
     {
         //API metode asynchronous multithread digunakan saat proses memanipulasi data (filter, sortir, dsb) melebihi 1 jt proses data, 
         // dengan ribuan user akses 

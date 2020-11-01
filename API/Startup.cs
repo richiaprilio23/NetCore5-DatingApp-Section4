@@ -1,8 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using API.Data;
+using API.Extensions;
+using API.Interfaces;
+using API.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -12,6 +17,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 
 namespace API
@@ -31,14 +37,31 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-            services.AddDbContext<DataContext>(options => 
-            { 
-                 options.UseNpgsql(_config.GetConnectionString("DefaultConnection"));
-            }); 
+            // dicommen move ke Extensions > AddApplicationServices.cs
+            services.AddApplicationServices(_config);
+            // services.AddScoped<ITokenService , TokenService>(); //Req HTTP JWT, panggil class dan interface 
+            // services.AddDbContext<DataContext>(options => 
+            // { 
+            //      options.UseNpgsql(_config.GetConnectionString("DefaultConnection"));
+            // }); 
+            
 
             services.AddControllers();
             services.AddCors(); //digunakan sby policy API MIddleware
+
+            // dicommen move ke Extensions > AddIdentityServices.cs
+            services.AddIdentityServices(_config);
+            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme) //add sbg authentication middleware
+            // .AddJwtBearer (options =>{
+            //     options.TokenValidationParameters = new TokenValidationParameters
+            //     {
+            //         //signature validasi server
+            //         ValidateIssuerSigningKey = true,
+            //         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"])), //TokenKey inisialisasi di dalam appsetings
+            //         ValidateIssuer = false,
+            //         ValidateAudience = false,
+            //     };
+            // });
 
              services.AddSwaggerGen(c =>
              {
@@ -65,6 +88,7 @@ namespace API
             .AllowAnyMethod() //mengijikan method apapun
             .WithOrigins("http://localhost:4200")); //asal mana mengijinkan permintaan API berasal
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using API.Data;
 using API.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -19,6 +20,7 @@ namespace API.Controllers
 
         //api/users
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult<IEnumerable<AppUser>> GetUsers()
         //IEnumerable = untuk nilai kembalian berupa list di dalam AppUser
         {
@@ -27,6 +29,7 @@ namespace API.Controllers
         }
 
         //api/users/3
+        [Authorize]
         [HttpGet("{id}")]
         public ActionResult<AppUser> GetUser(int id)
         //IEnumerable = tidak dipakai karena nilai kembalian hanya sebuah data dari parameter id
